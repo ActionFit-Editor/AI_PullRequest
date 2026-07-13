@@ -7,7 +7,7 @@ This file is shipped inside the UPM package so an AI assistant in a consuming pr
 - Package ID: `com.actionfit.ai-pr`
 - Display name: AI PullRequest
 - Repository: `https://github.com/ActionFit-Editor/AI_PullRequest.git`
-- Current package version at generation time: `1.0.2`
+- Current package version at generation time: `1.0.3`
 - Unity version: `6000.2`
 
 ## Purpose
@@ -15,6 +15,12 @@ This file is shipped inside the UPM package so an AI assistant in a consuming pr
 AI PullRequest defines ActionFit AI guidance for target integration branches, canonical task-branch selection, existing branch and PR discovery, commit messages, PR creation and updates, review response, sensitive-change disclosure, Korean PR text, Jira completion handoff, and final user reports.
 
 `com.actionfit.ai-worktrees` owns physical worktree slots, leases, Unity cache preservation, read-only audits, and cleanup dry runs. A consuming project owns its concrete target branch, Jira mappings, validation blockers, and local workspace settings.
+
+## Agent Skills
+
+- `Skills~/manifest.json` registers schema v2 `pull-request-help`, read-only `pull-request-status`, and explicit write-capable `pull-request-run` for Codex and Claude.
+- Help reads the generated `PACKAGE_SKILLS.md` inventory before explaining the package.
+- Status does not fetch or change Git/GitHub state. Run is explicit-only and applies this guide's existing branch, commit, PR, sensitive-change, Jira, and final-report contracts without adding merge or cleanup authority.
 
 ## Project Router Registration
 

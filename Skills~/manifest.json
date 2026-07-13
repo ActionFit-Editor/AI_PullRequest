@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 2,
+  "skillPrefix": "pull-request",
+  "helpSkill": "pull-request-help",
+  "skills": [
+    {
+      "name": "pull-request-help",
+      "agents": ["codex", "claude"],
+      "includeShared": false,
+      "access": "read-only"
+    },
+    {
+      "name": "pull-request-status",
+      "agents": ["codex", "claude"],
+      "includeShared": false,
+      "access": "read-only"
+    },
+    {
+      "name": "pull-request-run",
+      "agents": ["codex", "claude"],
+      "includeShared": false,
+      "access": "write-capable"
+    }
+  ]
+}

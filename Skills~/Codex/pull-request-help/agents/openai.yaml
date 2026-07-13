@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI PullRequest Help"
+  short_description: "Explain branch, commit, PR, and Jira handoff rules"
+  default_prompt: "Use $pull-request-help to explain AI PullRequest skills and collaboration safety rules."

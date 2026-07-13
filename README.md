@@ -38,10 +38,20 @@ After the package is published, install it through Custom Package Manager or add
 ```json
 {
   "dependencies": {
-    "com.actionfit.ai-pr": "https://github.com/ActionFit-Editor/AI_PullRequest.git#1.0.2"
+    "com.actionfit.ai-pr": "https://github.com/ActionFit-Editor/AI_PullRequest.git#1.0.3"
   }
 }
 ```
+
+## Agent Skills
+
+Custom Package Manager의 `Install or Refresh Agent Skills`는 Codex와 Claude에 다음 project-local skill을 설치합니다.
+
+- `pull-request-help`: branch, commit, PR, worktree 연계와 Jira handoff 규칙을 설명합니다.
+- `pull-request-status`: 현재 branch와 matching PR을 read-only로 점검하며 fetch, commit, push, PR 수정을 수행하지 않습니다.
+- `pull-request-run`: 사용자가 명시적으로 요청한 범위만 검증·commit·push하고 PR을 생성하거나 열려 있는 동일 PR을 갱신합니다.
+
+write-capable run skill은 암시 호출되지 않으며 merge, branch/worktree 삭제, publish, deploy를 수행하지 않습니다. Refresh는 사용자 수정 및 unmanaged installed skill을 보존합니다.
 
 ## Automatic AI Routing
 

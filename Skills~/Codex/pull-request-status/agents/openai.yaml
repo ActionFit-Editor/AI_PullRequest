@@ -1,0 +1,4 @@
+interface:
+  display_name: "Inspect Pull Request Status"
+  short_description: "Inspect branch and PR readiness without mutations"
+  default_prompt: "Use $pull-request-status to inspect the current branch and matching pull request without changing state."

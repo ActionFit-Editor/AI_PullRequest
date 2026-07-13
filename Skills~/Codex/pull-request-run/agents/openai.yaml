@@ -1,0 +1,6 @@
+interface:
+  display_name: "Run Pull Request Workflow"
+  short_description: "Validate, commit, push, and create an approved PR"
+  default_prompt: "Use $pull-request-run to prepare and open the explicitly requested pull request safely."
+policy:
+  allow_implicit_invocation: false
