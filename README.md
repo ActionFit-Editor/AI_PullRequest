@@ -1,34 +1,35 @@
 # AI PullRequest (com.actionfit.ai-pr)
 
-ActionFit AI agents use this package to follow the same branch, worktree, commit, pull request, review response, and final reporting workflow across Unity projects.
+ActionFit AI agents use this package to follow the same branch selection, commit, pull request, review response, and final reporting workflow across Unity projects.
 
 ## Current Scope
 
-This package owns portable AI guidance. Each consuming project still owns its target integration branch, worktree root, Jira status mapping, known Unity blockers, and tool-specific root instructions.
+This package owns portable GitHub collaboration guidance. `com.actionfit.ai-worktrees` owns reusable worktree slots, leases, Unity cache preservation, worktree audits, and cleanup dry runs. Each consuming project still owns its target integration branch, Jira status mapping, and known Unity blockers.
 
 The package does not store GitHub credentials and does not create or publish repositories by itself. AI agents continue to use the locally authenticated `git` and `gh` commands after following the approval and safety rules in `AI_GUIDE.md`.
 
-## Inspect Current Worktrees
+## Prepare And Inspect Worktrees
 
-Run from the consuming project root to collect local worktree, branch, dirty-state, and target-branch evidence:
-
-```bash
-python Packages/com.actionfit.ai-pr/Tools/inspect_worktrees.py
-```
-
-Include remote branch and GitHub pull request state:
+Use AI Worktrees to acquire a reusable slot after this package selects the canonical task branch:
 
 ```bash
-python Packages/com.actionfit.ai-pr/Tools/inspect_worktrees.py --remote
+python3 Packages/com.actionfit.ai-worktrees/Tools/manage_worktree_slots.py acquire \
+  --branch <branch> --base origin/<target-integration-branch> --task <task-id> --json
 ```
 
-Use structured output for an AI agent:
+Run the read-only worktree audit from the consuming project root:
 
 ```bash
-python Packages/com.actionfit.ai-pr/Tools/inspect_worktrees.py --remote --json
+python3 Packages/com.actionfit.ai-worktrees/Tools/inspect_worktrees.py --remote --json
 ```
 
-The inspector is read-only. It does not fetch, prune, reset, delete, merge, push, or change pull requests. Cleanup decisions still require explicit user approval.
+The previous path remains as a compatibility wrapper:
+
+```bash
+python3 Packages/com.actionfit.ai-pr/Tools/inspect_worktrees.py --remote --json
+```
+
+AI Worktrees never prunes, removes, resets, deletes, merges, pushes, or changes pull requests. Cleanup decisions still require explicit user approval.
 
 ## Install
 
@@ -37,7 +38,7 @@ After the package is published, install it through Custom Package Manager or add
 ```json
 {
   "dependencies": {
-    "com.actionfit.ai-pr": "https://github.com/ActionFit-Editor/AI_PullRequest.git#1.0.1"
+    "com.actionfit.ai-pr": "https://github.com/ActionFit-Editor/AI_PullRequest.git#1.0.2"
   }
 }
 ```
@@ -65,10 +66,12 @@ Projects should keep user-specific values outside the package. Cat Merge Cafe us
 # Local AI Settings
 
 target_integration_branch: dev_jewoo
-worktree_root: .Codex/worktrees
+worktree_root: .AI/worktrees
+worktree_strategy: pooled
+worktree_pool_size: 2
 ```
 
-Tool-specific files such as `AGENTS.md` and `CLAUDE.md` may define their own worktree root and final report wording, but should always resolve the PR base from the project target integration branch.
+Root tool files such as `AGENTS.md` and `CLAUDE.md` should remain lightweight entry points to the project router. Worktree configuration belongs in ignored local settings, and project-specific PR reporting belongs in the project workflow documentation.
 
 ## Publishing
 
