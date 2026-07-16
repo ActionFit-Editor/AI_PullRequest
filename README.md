@@ -38,7 +38,7 @@ After the package is published, install it through Custom Package Manager or add
 ```json
 {
   "dependencies": {
-    "com.actionfit.ai-pr": "https://github.com/ActionFit-Editor/AI_PullRequest.git#1.0.3"
+    "com.actionfit.ai-pr": "https://github.com/ActionFit-Editor/AI_PullRequest.git#1.0.4"
   }
 }
 ```
