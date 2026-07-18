@@ -7,7 +7,7 @@ This file is shipped inside the UPM package so an AI assistant in a consuming pr
 - Package ID: `com.actionfit.ai-pr`
 - Display name: AI PullRequest
 - Repository: `https://github.com/ActionFit-Editor/AI_PullRequest.git`
-- Current package version at generation time: `1.0.6`
+- Current package version at generation time: `1.0.9`
 - Unity version: `6000.2`
 
 ## Purpose
