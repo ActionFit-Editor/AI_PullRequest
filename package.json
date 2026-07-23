@@ -1,6 +1,6 @@
 {
   "name": "com.actionfit.ai-pr",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "displayName": "AI PullRequest",
   "description": "ActionFit AI agents use this package to follow portable branch selection, commit, pull request, review response, and final reporting rules.",
   "unity": "6000.2",
